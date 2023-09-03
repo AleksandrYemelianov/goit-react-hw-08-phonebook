@@ -10,7 +10,7 @@ function RegistrationForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [addUser, { isLoading }] = useAddUserMutation()
+    const [addUser] = useAddUserMutation()
     const dispatch = useDispatch()
 
     const credentials = {
