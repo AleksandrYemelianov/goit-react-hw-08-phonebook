@@ -9,7 +9,7 @@ import { selectContacts, selectVisibleContacts } from 'redux/selectors';
 
 import css from './ContactList.module.css';
 import 'react-toastify/dist/ReactToastify.css';
-// import { useGetContactsQuery } from 'redux/services/contactsAPI';
+
 
 const ContactList = () => {
 

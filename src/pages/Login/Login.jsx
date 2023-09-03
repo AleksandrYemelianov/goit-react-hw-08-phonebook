@@ -1,11 +1,12 @@
+import LoginForm from 'components/LoginForm/LoginForm'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import BackgraundHome from '../../images/img_home/homeBackgraund.jpg';
+import css from './Login.module.css'
 
 export default function Login() {
   return (
-    <div>
-      Login
-      <Link to='/signUp'>Sign Up</Link>
+    <div className={css.background} style={{ backgroundImage: `url(${BackgraundHome})` }}>
+      <LoginForm/>
     </div>
   )
 }
