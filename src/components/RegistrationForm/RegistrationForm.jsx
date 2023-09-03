@@ -39,10 +39,15 @@ function RegistrationForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
-            const {data} = await addUser(credentials);
+            const { data } = await addUser(credentials);
+            console.log(data)
             const token = data.token;
             dispatch(setToken(token))
+            setName('');
+            setEmail('');
+            setPassword('');
         } catch (error) {
             console.log(error)
         }
