@@ -5,7 +5,8 @@ export const userApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://connections-api.herokuapp.com',
         prepareHeaders: (headers, { getState }) => {
-            const {token: {token}} = getState()
+            const { token: { token } } = getState()
+            console.log(token)
             // If we have a token set in state, let's assume that we should be passing it.
             if (token) {
                 headers.set('authorization', `Bearer ${token}`)
@@ -35,7 +36,14 @@ export const userApi = createApi({
             }),
             invalidatesTags: ['User']
         }),
+        logOutUser: build.mutation({
+            query: () => ({
+                url: `/users/logout`,
+                method: 'POST',
+            }),
+            invalidatesTags: ['User']
+        }),
     }),
 });
 
-export const { useGetUserQuery, useAddUserMutation, useLoginUserMutation } = userApi;
+export const { useGetUserQuery, useAddUserMutation, useLoginUserMutation, useLogOutUserMutation } = userApi;

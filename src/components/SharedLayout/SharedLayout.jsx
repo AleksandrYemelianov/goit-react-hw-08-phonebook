@@ -1,5 +1,5 @@
 import Container from 'components/Container/Container';
-import Header from 'components/Header/Header';
+import AppBar from 'components/AppBar/AppBar';
 import React, { Suspense } from 'react'
 import { Outlet } from 'react-router-dom';
 // import css from './SharedLayout.module.css'
@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom';
 const SharedLayout = () => {
     return (
         <Container>
-            <Header/>
+            <AppBar/>
             <Suspense>
                 <Outlet/>
             </Suspense>

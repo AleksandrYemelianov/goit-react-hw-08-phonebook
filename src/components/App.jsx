@@ -14,9 +14,10 @@ const SignUp = lazy(() => import("pages/SignUp/SignUp"));
 
 
 export const App = () => {
+
   return (
     <>
-      <Routes>
+      {<Routes>
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path='contacts' element={<PrivateRoute redirectTo="/login" component={<Contacts />} />} />
@@ -24,7 +25,7 @@ export const App = () => {
           <Route path='signUp' element={<PublicRoute redirectTo="/contacts" component={<SignUp />} />} />
         </Route>
         {/* <Route path='*' element={<NotFound/>} /> */}
-      </Routes>
+      </Routes>}
       <ToastContainer />
     </>
   );

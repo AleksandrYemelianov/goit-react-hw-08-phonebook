@@ -4,7 +4,7 @@ import css from './Home.module.css'
 
 function Home() {
   return (
-    <div className={css.background} style={{ backgroundImage: `url(${BackgraundHome})` }}>Home</div>
+    <div className={css.background} style={{ backgroundImage: `url(${BackgraundHome})` }}></div>
   )
 }
 

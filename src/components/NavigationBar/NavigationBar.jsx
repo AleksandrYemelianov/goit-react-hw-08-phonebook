@@ -1,16 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import { useGetUserQuery } from 'redux/authUser/userSlice';
 // import Logo from 'components/Logo/Logo';
 
 function NavigationBar() {
+  const {isSuccess} =  useGetUserQuery();
   return (
     <>
-      {/* <Link to='/'><Logo/></Link> */}
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/contacts' >Contacts</NavLink>
-        <NavLink to='/login' >Login</NavLink>
+      {isSuccess ? <NavLink to='/contacts' >Contacts</NavLink> :
+        <NavLink to='/login' >Login</NavLink>}
     </>
-  )
+  );
 };
 
 export default NavigationBar   
