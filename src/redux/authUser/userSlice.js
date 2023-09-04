@@ -5,13 +5,12 @@ export const userApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://connections-api.herokuapp.com',
         prepareHeaders: (headers, { getState }) => {
-            const token = getState()
-            console.log(token)
+            const {token: {token}} = getState()
             // If we have a token set in state, let's assume that we should be passing it.
-            // if (token) {
-            //     headers.set('authorization', `Bearer ${token}`)
-            // }
-            // return headers
+            if (token) {
+                headers.set('authorization', `Bearer ${token}`)
+            }
+            return headers
         },
     }),
     tagTypes: ['User'],
@@ -26,7 +25,7 @@ export const userApi = createApi({
                 method: 'POST',
                 body: credentials,
             }),
-            invalidatesTags: ['Post']
+            invalidatesTags: ['User']
         }),
         loginUser: build.mutation({
             query: (credentials) => ({
@@ -34,7 +33,7 @@ export const userApi = createApi({
                 method: 'POST',
                 body: credentials,
             }),
-            invalidatesTags: ['Post']
+            invalidatesTags: ['User']
         }),
     }),
 });

@@ -6,12 +6,14 @@ import { useAddUserMutation } from 'redux/authUser/userSlice';
 import { setToken } from 'redux/authUser/tokenSlice';
 
 
+
 function RegistrationForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [addUser] = useAddUserMutation()
     const dispatch = useDispatch()
+    
 
     const credentials = {
         name,
@@ -48,6 +50,7 @@ function RegistrationForm() {
             setName('');
             setEmail('');
             setPassword('');
+
         } catch (error) {
             console.log(error)
         }
