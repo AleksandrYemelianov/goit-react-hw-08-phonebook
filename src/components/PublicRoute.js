@@ -1,9 +1,9 @@
+import { useAuth } from 'hooks/useAuth';
 import { Navigate } from 'react-router-dom';
-import { useGetUserQuery } from 'redux/authUser/userSlice';
 
 
-export const PublicRoute =  ({ component: Component, redirectTo = '/' }) => {
-    const { isSuccess } = useGetUserQuery();
-    console.log(isSuccess)
-    return isSuccess ? <Navigate to={redirectTo} /> : Component;
+
+export const PublicRoute = ({ component: Component, redirectTo = '/' }) => {
+    const { isSuccesses } = useAuth();
+    return isSuccesses ? <Navigate to={redirectTo} /> : Component;
 };

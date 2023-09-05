@@ -1,4 +1,4 @@
-import { createContact, deleteContact, getContacts } from "redux/operations";
+import { createContact, deleteContact, getContacts } from "redux/contacts/operations";
 
 const operationsThunk = [createContact, deleteContact, getContacts];
 export const operationsType = (type) => operationsThunk.map(operation => operation[type]);

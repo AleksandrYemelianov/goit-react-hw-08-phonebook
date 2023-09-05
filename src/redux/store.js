@@ -10,11 +10,10 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import {userApi} from './authUser/userSlice'
 
-import contactsReducer from './contacts/slice';
+import contactsReducer from './contacts/contactsSlice';
 import filterReducer from './filters/slice';
-import tokenReducer from './authUser/tokenSlice'
+import authSlice from './auth/authSlice'
 
 const authPersistConfig = {
   key: 'auth',
@@ -26,16 +25,15 @@ export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
     filter: filterReducer,
-    token: persistReducer(authPersistConfig, tokenReducer),
-    [userApi.reducerPath]: userApi.reducer,
+    auth: persistReducer(authPersistConfig, authSlice),
   },
-  middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware({
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(userApi.middleware);
-  },
+    }),
+  devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);

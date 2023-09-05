@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import {createContact } from 'redux/operations';
+import {createContact } from 'redux/contacts/operations';
 
 import optionNotification from 'components/Notification/Notification';
 import 'react-toastify/dist/ReactToastify.css';

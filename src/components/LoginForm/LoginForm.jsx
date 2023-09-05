@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import {  Box, TextField, Typography, Button, Container} from '@mui/material';
+import { Box, TextField, Typography, Button, Container} from '@mui/material';
 import { Link } from 'react-router-dom';
-import { setToken } from 'redux/authUser/tokenSlice';
-import { useLoginUserMutation } from 'redux/authUser/userSlice';
+import { loginUser } from 'redux/auth/operation';
+
+
 
 
 function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loginUser] = useLoginUserMutation()
     const dispatch = useDispatch()
+
 
     const credentials = {
         email,
@@ -34,18 +35,9 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const { data } = await loginUser(credentials);
-      const token = data.token;
-      dispatch(setToken(token))
-
-      setEmail('');
-      setPassword('');
-          
-    } catch (error) {
-      console.log(error)
-    }
+    dispatch(loginUser(credentials));
+    setEmail('');
+    setPassword('');
   };
   return (
     <Container maxWidth="xs" sx={{ p: '20px', mt: '30vh', borderRadius: '10px', boxShadow: '0px 0px 12px 5px rgba(232, 150, 17,0.8)', background: '#E89611', opacity: '0.9'}}>

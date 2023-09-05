@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {  Box, TextField, Typography, Button, Container} from '@mui/material';
-import { useAddUserMutation } from 'redux/authUser/userSlice';
-import { setToken } from 'redux/authUser/tokenSlice';
+import { registrationUser } from 'redux/auth/operation';
+
 
 
 
@@ -11,7 +11,6 @@ function RegistrationForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [addUser] = useAddUserMutation()
     const dispatch = useDispatch()
     
 
@@ -41,19 +40,10 @@ function RegistrationForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        try {
-            const { data } = await addUser(credentials);
-            console.log(data)
-            const token = data.token;
-            dispatch(setToken(token))
+            dispatch(registrationUser(credentials))
             setName('');
             setEmail('');
             setPassword('');
-
-        } catch (error) {
-            console.log(error)
-        }
     };
     return (
         <Container maxWidth="xs" sx={{ p: '20px', mt: '30vh', borderRadius: '10px', boxShadow: '0px 0px 12px 5px rgba(232, 150, 17,0.8)', background: '#E89611', opacity: '0.9' }}>

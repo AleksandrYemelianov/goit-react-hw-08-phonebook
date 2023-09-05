@@ -1,12 +1,10 @@
+import { useAuth } from 'hooks/useAuth';
 import { Navigate } from 'react-router-dom';
-import { useGetUserQuery } from 'redux/authUser/userSlice';
 
 
 export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
-    const { isSuccess } = useGetUserQuery();
+  const { isSuccesses, isRefreshing } = useAuth();
+  const shouldRedirect = !isSuccesses && !isRefreshing;
 
-    const shouldRedirect = !isSuccess;
-
-
-    return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
+  return shouldRedirect ? <Navigate to={redirectTo} /> : Component;
 };

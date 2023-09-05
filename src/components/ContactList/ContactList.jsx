@@ -4,8 +4,8 @@ import optionNotification from 'components/Notification/Notification';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { getContacts } from 'redux/operations';
-import { selectContacts, selectVisibleContacts } from 'redux/selectors';
+import { getContacts } from 'redux/contacts/operations';
+import { selectContacts, selectVisibleContacts } from 'redux/contacts/contactsSelectors';
 
 import css from './ContactList.module.css';
 import 'react-toastify/dist/ReactToastify.css';

@@ -1,7 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit'
-import { createContact, deleteContact, getContacts } from 'redux/operations';
-import { handleFulfilledCreate, handleFulfilledDelete, handleFulfilledGet, handlePending, handleRejected } from 'redux/services/functinSlice';
-import { operationsType } from 'redux/services/operationsType';
+import { createContact, deleteContact, getContacts } from 'redux/contacts/operations';
+import { handleFulfilledCreate, handleFulfilledDelete, handleFulfilledGet, handlePending, handleRejected } from 'redux/contacts/contactsReducer';
+import { operationsType } from 'redux/contacts/operationsType';
 
 const contactsInitialState = {
     items: [],
