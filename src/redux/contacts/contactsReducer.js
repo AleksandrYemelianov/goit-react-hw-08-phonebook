@@ -22,3 +22,7 @@ export const handleFulfilledDelete = (state, { payload }) => {
     state.isLoading = false;
     state.error = null;
 };
+export const handleFulfilledUpdate = (state) => {
+    state.isLoading = false;
+    state.error = null;
+};

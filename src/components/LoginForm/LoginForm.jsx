@@ -4,8 +4,7 @@ import { Box, TextField, Typography, Button, Container} from '@mui/material';
 import { Link } from 'react-router-dom';
 import { loginUser } from 'redux/auth/operation';
 
-
-
+import css from './LoginForm.module.css';
 
 function LoginForm() {
     const [email, setEmail] = useState('');
@@ -80,11 +79,11 @@ function LoginForm() {
             value={password}
             onChange={handleChange}
              />
-          <Button type='submit' variant="contained" size="medium" sx={{width: '50%', mx: 'auto', mt: '10px', fontWeight: '500', letterSpacing: '0.1em' }}>LOGIN</Button>
+          <Button type='submit' variant="contained" size="medium" sx={{width: '30%', mx: 'auto', mt: '10px', fontWeight: '500', letterSpacing: '0.1em', backgroundColor: 'transparent', border: '1px solid #000000', borderRadius: '10px', color: '#000000', '&:hover': {color: '#E89611', border: '1px solid transparent' } }}>LOGIN</Button>
         </Box>
         <Typography variant='p' component="p" sx={{ mt: '10px', fontSize: '16px', color: 'black'}}>
           Don’t have an account? 
-          <Link to='/signUp' >
+          <Link to='/signUp' className={css.link}>
             SIGN UP
           </Link>
         </Typography>

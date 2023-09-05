@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
 import { selectContacts } from 'redux/contacts/contactsSelectors';
-import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import {createContact } from 'redux/contacts/operations';
 
 import optionNotification from 'components/Notification/Notification';
 import 'react-toastify/dist/ReactToastify.css';
-import css from './ContactForm.module.css'
+import { Box, Button, Container, TextField, Typography } from '@mui/material';
+
 
 export default function ContactForm() {
     const [name, setName] = useState('')
@@ -17,7 +17,7 @@ export default function ContactForm() {
     const { items } = useSelector(selectContacts)
     const dataContact = {
         name,
-        phone
+        number: phone
     }
 
     const nameNormalize = name.toLowerCase();
@@ -52,37 +52,53 @@ export default function ContactForm() {
         };
     }
 
-    const idNameInput = nanoid();
-    const idNumberInput = nanoid()
     return (
-        <div className={css.formWrap}>
-                <form onSubmit={handleSubmit} className={css.form}>
-                    <label htmlFor={idNameInput} className={css.label}>Name</label>
-                    <input
-                    className={css.input}
-                    id={idNameInput}
-                    type="text"
-                    name="name"
-                    value={name}
-                    onChange={handleChange}
-                    pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                    title={'Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore Artagnan'}
-                    required
+        <Container maxWidth="xs" sx={{ minHeight: '280px', p: '20px', mt: '10vh', borderRadius: '10px', boxShadow: '0px 0px 12px 5px rgba(232, 150, 17,0.8)', background: '#E89611', opacity: '0.9' }}>
+            <Box sx={{
+                textAlign: 'center'
+            }}>
+                <Typography variant="h4" component="h2" sx={{ fontSize: '24px', fontWeight: '500', letterSpacing: '0.01em', color: 'black' }}>
+                    Create new contact
+                </Typography>
+                <Box
+                    component="form"
+                    onSubmit={handleSubmit}
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }}>
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="text"
+                        type="text"
+                        label="Name"
+                        name="name"
+                        autoComplete="name"
+                        autoFocus
+                        value={name}
+                        onChange={handleChange}
+                        sx={{
+                            borderRadius: '10px'
+                        }}
                     />
-                    <label htmlFor={idNumberInput} className={css.label}>Number</label>
-                    <input
-                    className={css.input}
-                    id={idNumberInput}
-                    type="tel"
-                    name="number"
-                    value={phone}
-                    onChange={handleChange}
-                    pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
-                    title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                    required
+          
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="tel"
+                        type="tel"
+                        label="Number"
+                        name="number"
+                        autoComplete="number"
+                        value={phone}
+                        onChange={handleChange}
                     />
-                    <button type="submit" className={css.btn}>Add contact</button>
-                </form>
-        </div>
-    )
-    }
+                    <Button type='submit' variant="contained" size="medium" sx={{ width: '50%', mx: 'auto', mt: '10px', fontWeight: '500', letterSpacing: '0.05em', backgroundColor: 'transparent', border: '1px solid #000000', borderRadius: '10px', color: '#000000', '&:hover': {color: '#E89611', border: '1px solid transparent' }  }}>ADD CONTACT</Button>
+                </Box>
+            </Box>
+        </Container>
+    );
+};

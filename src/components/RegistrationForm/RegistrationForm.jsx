@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {  Box, TextField, Typography, Button, Container} from '@mui/material';
 import { registrationUser } from 'redux/auth/operation';
 
-
+import css from './RegistrationForm.module.css';
 
 
 function RegistrationForm() {
@@ -98,11 +98,11 @@ function RegistrationForm() {
                         value={password}
                         onChange={handleChange}
                         />
-                    <Button type='submit' variant="contained" size="medium" sx={{ width: '50%', mx: 'auto', mt: '10px', fontWeight: '500', letterSpacing: '0.1em' }}>SING UP</Button>
+                    <Button type='submit' variant="contained" size="medium" sx={{ width: '30%', mx: 'auto', mt: '10px', fontWeight: '500', letterSpacing: '0.1em', backgroundColor: 'transparent', border: '1px solid #000000', borderRadius: '10px', color: '#000000', '&:hover': {color: '#E89611', border: '1px solid transparent' } }}>SING UP</Button>
                 </Box>
                 <Typography variant='p' component="p" sx={{ mt: '10px', fontSize: '16px', color: 'black' }}>
                     Already have an account?
-                    <Link to='/login' >
+                    <Link to='/login' className={css.link}>
                         LOGIN
                     </Link>
                 </Typography>

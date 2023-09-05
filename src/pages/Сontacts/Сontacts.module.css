@@ -1,0 +1,21 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  /* opacity: 0.8; */
+}
+.section {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50px;
+  padding-bottom: 120px;
+}
+
+.wrapper {
+  width: 400px;
+}

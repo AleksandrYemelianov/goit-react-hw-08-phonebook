@@ -28,7 +28,9 @@ export const App = () => {
       {!isRefreshing && <Routes>
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path='contacts' element={<PrivateRoute redirectTo="/login" component={<Contacts />} />} />
+          <Route path='contacts/*' element={<PrivateRoute redirectTo="/login" component={<Contacts />} />}>
+            <Route path="edit/:materialId" />
+          </Route>
           <Route path='login' element={<PublicRoute redirectTo="/contacts" component={<Login />} />} />
           <Route path='signUp' element={<PublicRoute redirectTo="/contacts" component={<SignUp />} />} />
         </Route>
@@ -39,6 +41,7 @@ export const App = () => {
   );
 };
 
+// element={<EditContactModal />}
 
 
 

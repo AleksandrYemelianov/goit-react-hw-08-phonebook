@@ -7,14 +7,18 @@ import { NavLink } from 'react-router-dom';
 
 import css from './AppBar.module.css';
 
+
+
 function AppBar() {
   const {isSuccesses} = useAuth();
 
   return (
     <header className={css.header}>
-      <NavLink to='/'>Home</NavLink>
-      <NavigationBar />
-      {isSuccesses && <UserMenu />}
+      <nav className={css.container}>
+        <NavLink to='/' className={({isActive}) => isActive ? css.active : css.link}>Home</NavLink>
+        <NavigationBar />
+        {isSuccesses && <UserMenu />}
+      </nav>
     </header>
   );
 }
