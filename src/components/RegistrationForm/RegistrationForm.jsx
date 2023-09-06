@@ -83,7 +83,8 @@ function RegistrationForm() {
                         name="email"
                         autoComplete="email"
                         value={email}
-                        onChange={handleChange}                       
+                        onChange={handleChange} 
+                        helperText='example@example.com'
                     />
           
                     <TextField
@@ -97,6 +98,7 @@ function RegistrationForm() {
                         autoComplete="password"
                         value={password}
                         onChange={handleChange}
+                        helperText='Password must have at least 7 characters.'
                         />
                     <Button type='submit' variant="contained" size="medium" sx={{ width: '30%', mx: 'auto', mt: '10px', fontWeight: '500', letterSpacing: '0.1em', backgroundColor: 'transparent', border: '1px solid #000000', borderRadius: '10px', color: '#000000', '&:hover': {color: '#E89611', border: '1px solid transparent' } }}>SING UP</Button>
                 </Box>

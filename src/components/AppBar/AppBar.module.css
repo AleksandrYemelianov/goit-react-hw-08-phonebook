@@ -13,8 +13,9 @@
   margin-right: auto;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
+  align-items: center;
 }
 
 .link {
@@ -33,4 +34,24 @@
   font-size: 20px;
   color: var(--primary-color);
   border-bottom: 2px solid var(--primary-color);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.logoBase {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #000000;
+  transition: color var(--transition);
+}
+
+.logoImg {
+  display: block;
+  width: 20px;
+  height: 20%;
+  border-radius: 10px;
 }

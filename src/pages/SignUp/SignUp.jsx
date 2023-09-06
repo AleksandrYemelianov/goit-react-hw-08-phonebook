@@ -1,5 +1,5 @@
 import React from 'react';
-import BackgraundHome from '../../images/img_home/homeBackgraund.jpg';
+import BackgraundHome from '../../images/img_home/homeBackgraund1.webp';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import css from './SignUp.module.css';
 

@@ -8,12 +8,13 @@ import { PublicRoute } from './PublicRoute';
 import { refreshUser } from 'redux/auth/operation';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
+import UpdateContactModal from './UpdateContactModal/UpdateContactModal';
 
 const Home = lazy(() => import("../pages/Home/Home"));
 const Contacts = lazy(() => import("../pages/Сontacts/Сontacts"));
 const Login = lazy(() => import("pages/Login/Login"));
 const SignUp = lazy(() => import("pages/SignUp/SignUp"));
-// const NotFound = lazy(() => import("pages/NotFound/NotFound"));
+const NotFound = lazy(() => import("pages/NotFound/NotFound"));
 
 
 export const App = () => {
@@ -25,17 +26,18 @@ export const App = () => {
   }, [dispatch]);
   return (
     <>
-      {!isRefreshing && <Routes>
-        <Route path='/' element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path='contacts/*' element={<PrivateRoute redirectTo="/login" component={<Contacts />} />}>
-            <Route path="edit/:materialId" />
+      {!isRefreshing &&
+        <Routes>
+          <Route path='/' element={<SharedLayout />}>
+            <Route index element={<Home />} />
+            <Route path='contacts' element={<PrivateRoute redirectTo="/login" component={<Contacts />} />}>
+              <Route path="edit/:contactId" element={<UpdateContactModal />} />
+            </Route>
+            <Route path='login' element={<PublicRoute redirectTo="/contacts" component={<Login />} />} />
+            <Route path='signUp' element={<PublicRoute redirectTo="/contacts" component={<SignUp />} />} />
+            <Route path='*' element={<NotFound />} />
           </Route>
-          <Route path='login' element={<PublicRoute redirectTo="/contacts" component={<Login />} />} />
-          <Route path='signUp' element={<PublicRoute redirectTo="/contacts" component={<SignUp />} />} />
-        </Route>
-        {/* <Route path='*' element={<NotFound/>} /> */}
-      </Routes>}
+        </Routes>}
       <ToastContainer />
     </>
   );

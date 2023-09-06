@@ -3,10 +3,11 @@ import ContactForm from 'components/ContactForm/ContactForm'
 import ContactList from 'components/ContactList/ContactList'
 import Container from 'components/Container/Container'
 import Filter from 'components/Filter/Filter'
-import BackgroundContacts from '../../images/img_contacts/contactsBackground.jpg';
+import BackgroundContacts from '../../images/img_contacts/contactsBackground1.webp';
 
 import css from './Сontacts.module.css';
 import ContactListWrap from 'components/ContactListWrap/ContactListWrap'
+import { Outlet } from 'react-router-dom'
 
 
 function Contacts() {
@@ -23,6 +24,7 @@ function Contacts() {
               <ContactList />
             </ContactListWrap>
           </div>
+          <Outlet />
         </div>
       </Container>
     </main>

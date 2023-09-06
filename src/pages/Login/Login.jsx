@@ -1,6 +1,6 @@
 import LoginForm from 'components/LoginForm/LoginForm'
 import React from 'react'
-import BackgraundHome from '../../images/img_home/homeBackgraund.jpg';
+import BackgraundHome from '../../images/img_home/homeBackgraund1.webp';
 import css from './Login.module.css'
 
 export default function Login() {
